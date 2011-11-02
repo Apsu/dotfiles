@@ -13,7 +13,6 @@ synergys
 statnot &
 mpd
 urxvtd -q -f -o
-emacs --daemon
 source .gnupg/gpg-agent.sh
 
 exec xmonad
