@@ -1,0 +1,11 @@
+url_completion_use_history = true;
+
+register_user_stylesheet(
+  make_css_data_uri(["input, textarea, select {color: white !important; background-color: black !important;}"]));
+
+session_pref("signon.rememberSignons", true);
+session_pref("signon.expireMasterPassword", false);
+session_pref("signon.SignonFileName", "signons.txt");
+Components.classes["@mozilla.org/login-manager;1"].getService(Components.interfaces.nsILoginManager); // init
+
+xkcd_add_title = true;

@@ -1,0 +1,2 @@
+#!/bin/bash
+amixer sget $(amixer scontrols | head -n1 | awk '{print $4}') | grep % | awk '{print $NF}' | sed 's/\[off\]/orange/' | sed 's/\[on\]/green/' | head -n1

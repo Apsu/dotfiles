@@ -1,0 +1,17 @@
+Config { font = "xft:DejaVu Sans Mono-9"
+  , bgColor = "default"
+  , fgColor = "white"
+  , position = Top
+  , commands = [
+      Run MultiCpu [""] 20
+    , Run Memory ["-t","Mem: <usedratio>%"] 20
+    , Run Battery ["-l", "red", "-n", "orange", "-h", "green", "-t", "<fc=cyan>Batt:</fc> <left>%/<fc=cyan><timeleft></fc>"] 300
+    , Run Com ".xmonad/volume" [""] "volume" 10
+    , Run Com ".xmonad/muted" [""] "muted" 10
+    , Run Com ".xmonad/status" [""] "status" 5
+    , Run StdinReader
+  ]
+  , sepChar = "%"
+  , alignSep = "}{"
+  , template = "%StdinReader%}{[<fc=cyan>%multicpu%</fc>][<fc=cyan>%memory%</fc>][<fc=cyan>Vol:</fc> <fc=%muted%>%volume%</fc>][%battery%][<fc=cyan>%status%</fc>]"
+}

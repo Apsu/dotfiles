@@ -1,0 +1,3 @@
+#!/bin/bash
+
+echo `xprop -root WM_NAME | awk -F\" '{print $2}'`
