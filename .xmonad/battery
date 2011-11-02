@@ -1,0 +1,25 @@
+#!/bin/bash
+
+cd /sys/class/power_supply/BAT0
+full=`cat charge_full`
+rem=`cat charge_now`
+cur=`cat current_now`
+cap=`echo "scale=2; a = $rem / $full * 100; scale = 0; a / 1" | bc`
+
+if [[ $cap -gt 100 ]]; then cap="100"; fi
+
+if [[ $cur -eq 0 ]]; then
+  dur="Chrg"
+else
+  dur=`echo "scale=2; a = $full / $cur; scale=0; a / 1" | bc`
+fi
+
+if [ $cap -lt 75 -a $cap -gt 25 ]; then
+  col="Orange"
+elif [ $cap -lt 25 ]; then
+  col="Red"
+else
+  col="Green"
+fi
+
+echo "<fc=$col>$cap%</fc>/<fc=blue>$dur</fc>"
