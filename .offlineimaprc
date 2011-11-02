@@ -1,0 +1,59 @@
+[general]
+#ui = TTY.TTYUI
+accounts = personal, work
+pythonfile = ~/.offlineimap.py
+
+[mbnames]
+enabled = yes
+filename = ~/.mutt/mailboxes
+header = "mailboxes "
+peritem = "+%(accountname)s/%(foldername)s"
+sep = " "
+footer = "\n"
+
+[Account personal]
+localrepository = personal-local
+remoterepository = personal-remote
+
+[Account work]
+localrepository = work-local
+remoterepository = work-remote
+
+[Repository personal-local]
+type = Maildir
+localfolders = ~/mail/personal
+
+[Repository work-local]
+type = Maildir
+localfolders = ~/mail/work
+
+[Repository personal-remote]
+type = Gmail
+remoteuser = diopter@gmail.com
+remotepasseval = get_pass(".gnupg/gmail.gpg")
+realdelete = no
+keepalive = 60
+
+nametrans = lambda folder: re.sub('.*spam$', 'spam',
+                           re.sub('.*drafts$', 'drafts',
+                           re.sub('.*sent_mail$', 'sent',
+                           re.sub('.*starred$', 'flagged',
+                           re.sub('.*trash$', 'trash',
+                           re.sub(' ', '_', folder.lower()))))))
+
+folderfilter = lambda folder: folder not in ['[Gmail]/All Mail']
+
+[Repository work-remote]
+type = IMAP
+ssl = yes
+remotehost = rackermail.rackspace.com
+remoteuser = evan.callicoat
+remotepasseval = get_pass(".gnupg/rssso.gpg")
+keepalive = 60
+
+nametrans = lambda folder: re.sub('sent_items', 'sent',
+                           re.sub('notes', 'flagged',
+                           #re.sub('deleted_items', 'trash',
+                           re.sub(' ', '_', folder.lower())))
+
+folderfilter = lambda folder: folder in ['INBOX', 'Drafts', 'Sent Items', 'Notes', 'SAFUN']
