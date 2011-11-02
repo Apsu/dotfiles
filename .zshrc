@@ -1,6 +1,9 @@
 # Disable ^S/^Q flow control
 stty -ixon
 
+# Gee Pee Gees!
+source .gnupg/gpg-agent.sh
+
 # Handle TTY, PTY and Emacs terminal
 if [[ ! -z $EMACS ]]; then;
   export TERM=eterm-color
