@@ -1,0 +1,9 @@
+#!/bin/zsh
+
+base="/home/chroot/apsu"
+
+sudo mount -o bind /dev $base/dev
+sudo mount -o bind /sys $base/sys
+sudo mount -o bind /proc $base/proc
+
+sudo chroot $base $@

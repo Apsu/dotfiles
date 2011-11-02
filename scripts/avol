@@ -1,0 +1,3 @@
+#!/bin/zsh
+
+amixer sset $(amixer scontrols | head -n1 | awk '{print $4}') $@

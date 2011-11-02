@@ -1,0 +1,3 @@
+#!/bin/bash
+
+ps ax | grep Z | grep -v grep

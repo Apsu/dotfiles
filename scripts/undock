@@ -1,0 +1,4 @@
+#!/bin/zsh
+
+bt-input -d keyboard
+bt-input -d mouse
