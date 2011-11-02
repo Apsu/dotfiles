@@ -2,7 +2,7 @@
 stty -ixon
 
 # Gee Pee Gees!
-source .gnupg/gpg-agent.sh
+source .gnupg/gpg-agent.sh &>/dev/null
 
 # Handle TTY, PTY and Emacs terminal
 if [[ ! -z $EMACS ]]; then;
