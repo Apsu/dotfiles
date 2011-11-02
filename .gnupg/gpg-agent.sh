@@ -4,7 +4,7 @@ gnupginf="${HOME}/.gnupg/gpg-agent.info"
 if (pgrep -u "${USER}" gpg-agent); then
     eval $(cat $gnupginf | xargs -n 1 echo export)
 else
-    eval $(gpg-agent --enable-ssh-support --daemon --write-env-file $gnupginf)
+    eval $(gpg-agent --enable-ssh-support --disable-scdaemon --daemon --write-env-file $gnupginf)
 fi
 
 #export GPG_TTY=$(tty)
