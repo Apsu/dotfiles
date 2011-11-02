@@ -1,0 +1,17 @@
+###
+# gmail specific options
+###
+
+color status green default
+
+set from      = "diopter@gmail.com" \
+    realname  = "Evan" \
+    sendmail  = "/usr/bin/msmtp -a personal" \
+    mbox      = "+personal/inbox" \
+    postponed = "+personal/drafts"
+
+unset record
+
+#macro index E "<change-folder>+personal/archive<enter><limit>~B " "Search everything"
+macro index D "<save-message>+personal/trash<enter>"              "Move message to the trash"
+#macro index S "<save-message>+personal/spam<enter>"               "Mark message as spam"

@@ -1,0 +1,3 @@
+#text/html; elinks -dump -default-mime-type text/html %s; needsterminal; copiousoutput;
+text/html; w3m -dump %s; nametemplate=%s.html; copiousoutput
+
