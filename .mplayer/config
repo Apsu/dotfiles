@@ -1,0 +1,8 @@
+[default]
+# Write your default config options here!
+
+#vo=vdpau
+#vc=ffmpeg12vdpau,ffh264vdpau,ffwmv3vdpau,ffvc1vdpau,ffodivxvdpau
+vo=xv
+ao=pulse
+prefer-ipv4=true

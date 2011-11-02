@@ -1,0 +1,16 @@
+###
+# rackspace specific options
+###
+
+color status cyan default
+
+set from      = "evan.callicoat@rackspace.com" \
+    realname  = "Evan Callicoat" \
+    sendmail  = "/usr/bin/msmtp -a work" \
+    mbox      = "+work/inbox" \
+    record    = "+work/sent" \
+    postponed = "+work/drafts"
+
+#macro index E "<change-folder>+work/Archive<enter><limit>~B " "Search everything"
+#macro index D "<save-message>+work/trash<enter>"              "Move message to the trash"
+#macro index S "<save-message>+work/spam<enter>"               "Mark message as spam"
