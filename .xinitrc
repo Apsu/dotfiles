@@ -13,6 +13,5 @@ synergys
 statnot &
 mpd
 urxvtd -q -f -o
-source .gnupg/gpg-agent.sh
 
 exec xmonad
