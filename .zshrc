@@ -43,13 +43,18 @@ export WINEARCH=win32
 export BROWSER=conkeror
 export EDITOR="em"
 
+# looolz
+alias sex='.ssh/ssh.exp'
+alias eakey='sex .gnupg/easso.gpg'
+alias stkey='sex .gnupg/staging.gpg'
+
 # remote access shortcuts for work
-alias dfw='.ssh/ssh.exp evan.callicoat dfw'
-alias iad='.ssh/ssh.exp evan.callicoat iad'
-alias ord='.ssh/ssh.exp evan.callicoat ord'
-alias ord1b='.ssh/ssh.exp evan.callicoat ord1b'
-alias mex07='.ssh/ssh.exp ecallicoat mex07'
-alias staging='ssh root@pxe.staging.mlsrvr.com'
+alias dfw='eakey evan.callicoat dfw'
+alias iad='eakey evan.callicoat iad'
+alias ord='eakey evan.callicoat ord'
+alias ord1b='eakey evan.callicoat ord1b'
+alias mex07='eakey ecallicoat mex07'
+alias staging='stkey root staging'
 alias ordts='rdesktop -u evan.callicoat -d wm -x l -z -P -K -g 1680x1050 terminal1.dc.ord1a.mlsrvr.com'
 
 # other shortcuts
