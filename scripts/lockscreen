@@ -1,0 +1,4 @@
+#!/bin/bash
+xscreensaver-command -lock
+#xscreensaver settings do this for us now
+#xset dpms force standby &

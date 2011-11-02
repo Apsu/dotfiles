@@ -1,0 +1,33 @@
+#!/bin/zsh
+
+nvrandr () {
+  DPYS=`nv-control-dpy --get-associated-dpys | grep associated | awk '{print $NF}'`
+  TV=`nv-control-dpy --dynamic-twinview`
+  MASK=`echo $TV | grep probed | awk '{print $NF}'`
+
+  # if display config hasn't changed
+  if [[ $MASK -eq $DPYS ]]; then continue; fi
+
+  # if no external displays, go single
+  if [[ $MASK -eq '0x00010000' ]]; then
+    META="`nv-control-dpy --print-current-metamode | grep current | cut -d'"' -f 2 | cut -d' ' -f 5-`"
+    xrandr -s 0
+    nv-control-dpy --delete-metamode $META 2>&1 > /dev/null
+    nv-control-dpy --set-associated-dpys $MASK 2>&1 > /dev/null
+  # otherwise go dual
+  else
+    HZ=`echo $TV | grep new | awk '{print $8}' | cut -d';' -f 1`
+    MODE=`xrandr 2> /dev/null | tail -n +3 | grep $HZ | awk '{print $1}'`
+    xrandr -s $MODE -r $HZ
+  fi
+
+  EXT=`nv-control-dpy --probe-dpys | tail -n -3 | head -n 1 | sed 's/.*(\(.*\)).*/\1/'`
+  nvidia-settings -a XVideoSyncToDisplay="$EXT"
+
+  xmonad --restart
+}
+
+while true; do
+  sleep 1
+  nvrandr
+done

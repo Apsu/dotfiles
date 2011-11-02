@@ -1,0 +1,3 @@
+#!/bin/zsh
+
+gpg -dq --batch --no-tty $@ 2>/dev/null

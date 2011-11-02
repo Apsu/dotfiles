@@ -1,0 +1,12 @@
+#!/bin/zsh
+
+case $1 in
+  off)
+    xdg-screensaver suspend `xwininfo -root | grep id: | awk '{print $4}'`
+    xset -dpms
+    ;;
+  on)
+    xdg-screensaver resume `xwininfo -root | grep id: | awk '{print $4}'`
+    xset +dpms
+    ;;
+esac

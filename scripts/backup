@@ -1,0 +1,6 @@
+#!/bin/bash
+
+#TODO: Check that external is mounted
+
+sudo rsync -phaxPHAX --del / /boot /home /mnt/loki #apsu@munin::loki/
+echo -e "\a"

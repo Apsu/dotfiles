@@ -1,0 +1,3 @@
+#!/bin/bash
+
+rdesktop -u evan.callicoat -K -g 1680x1025 $@
