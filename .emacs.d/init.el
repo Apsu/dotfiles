@@ -80,6 +80,9 @@
 (global-set-key (kbd "M-s") 'isearch-forward-regexp)
 (global-set-key (kbd "M-r") 'isearch-backward-regexp)
 
+; Because it's awesome
+(global-set-key (kbd "C-.") 'repeat)
+
 ; Load magit
 (autoload 'magit-status "magit" nil t)
 
