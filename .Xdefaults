@@ -10,7 +10,8 @@ URxvt.urlLauncher: conkeror
 URxvt.matcher.button: 1
 URxvt.perl-ext-common: default,matcher,keyboard-select,-searchable-scrollback
 URxvt.keysym.M-Escape: perl:keyboard-select:activate
-URxvt.keysym.C-Return:  ! C-^ because urxvt won't emit C-<Return>
+! C-^ because urxvt won't emit C-<Return>
+URxvt.keysym.C-Return: 
 URxvt.iso14755: false
 
 Xft.rgba: rgba
