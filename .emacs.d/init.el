@@ -8,7 +8,7 @@
 ;(load "wander")
 ;(load "mew")
 
-(setq inhibit-startup-message   t)   ; Don't want any startup message
+(setq inhibit-startup-message    t)  ; Don't want any startup message
 
 ; Backup file creation
 (setq make-backup-files t)
@@ -35,7 +35,7 @@
 ; Region highlighting without key clobbering 
 (cua-mode)
 (setq-default cua-enable-cua-keys nil)
-(global-set-key (kbd "C-^") 'cua-set-rectangle-mark)
+(global-set-key (kbd "C-^") 'cua-set-rectangle-mark) ; C-^ because urxvt won't emit C-<Return>
 
 ; Load theme!
 (require 'color-theme)
