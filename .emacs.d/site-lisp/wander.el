@@ -31,16 +31,20 @@
 (setq wl-trash-folder "%Trash")
 
 (setq wl-folder-check-async t)
-(setq wl-biff-notify-hook '(ding))
 (setq wl-biff-check-interval 20)
 (setq wl-biff-check-folder-list '("%INBOX"))
 
+(defun my-wl-update-current-summaries ()
+  (setq buffers (wl-collect-summary))
+  (save-excursion
+    (dolist (buffer buffers)
+      (set-buffer buffer)
+      (wl-summary-sync-update))))
+
 (add-hook 'wl-biff-notify-hook
           '(lambda ()
-            (with-current-buffer wl-current-summary-buffer
-              (save-excursion
-                (wl-summary-sync-update)))
-            (ding)))
+             (my-wl-update-current-summaries)
+             (ding)))
 
 (setq elmo-imap4-use-modified-utf7 t)
 
