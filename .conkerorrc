@@ -9,3 +9,5 @@ session_pref("signon.rememberSignons", true);
 //Components.classes["@mozilla.org/login-manager;1"].getService(Components.interfaces.nsILoginManager); // init
 
 xkcd_add_title = true;
+
+set_user_agent("Mozilla/5.0 (X11; Linux x86_64; rv:7.0) Gecko/20110927 Firefox/7.0");
