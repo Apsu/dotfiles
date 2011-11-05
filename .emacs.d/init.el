@@ -1,13 +1,3 @@
-(let ((default-directory "~/.emacs.d/site-lisp/"))
-  (normal-top-level-add-to-load-path '("."))
-  (normal-top-level-add-subdirs-to-load-path))
-
-(load "python")
-(load "erlang")
-(load "tramp")
-;(load "wander")
-;(load "mew")
-
 (setq inhibit-startup-message    t)  ; Don't want any startup message
 
 ; Backup file creation
@@ -147,3 +137,11 @@
           (lambda ()
             (org-indent-mode)))
 
+(let ((default-directory "~/.emacs.d/site-lisp/"))
+  (normal-top-level-add-to-load-path '("."))
+  (normal-top-level-add-subdirs-to-load-path))
+
+(load "python")
+(load "erlang")
+(load "tramp")
+(load "wander")
