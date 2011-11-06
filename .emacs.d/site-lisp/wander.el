@@ -32,7 +32,7 @@
 
 (setq wl-folder-check-async t)
 (setq wl-biff-check-interval 20)
-(setq wl-biff-check-folder-list '("%INBOX"))
+(setq wl-biff-check-folder-list '("%INBOX" "%Sent" "%Drafts" "%Trash" "%Gmail" "%Rackspace"))
 
 (defun my-wl-update-current-summaries ()
   (setq buffers (wl-collect-summary))
@@ -47,6 +47,10 @@
              (ding)))
 
 (setq elmo-imap4-use-modified-utf7 t)
+
+(add-hook 'mime-view-mode-hook
+          '(lambda ()
+             (visual-line-mode t)))
 
 (autoload 'wl-user-agent-compose "wl-draft" nil t)
 (if (boundp 'mail-user-agent)
@@ -74,8 +78,7 @@
 
 (setq wl-prefetch-threshold 500000)
 
-(setq wl-stay-folder-window t)
-(setq wl-folder-window-width 30) ;; toggle on/off with 'i'
+(setq wl-folder-window-width 30)
 
 (mime-set-field-decoder
  'From nil 'eword-decode-and-unfold-unstructured-field-body)
@@ -128,8 +131,13 @@
 
 (setq elmo-msgdb-extra-fields
       (cons "content-type" elmo-msgdb-extra-fields))
+
 (setq wl-summary-line-format-spec-alist
       (append wl-summary-line-format-spec-alist
               '((?@ (wl-summary-line-attached)))))
-(setq wl-summary-line-format "%n%T%P%1@%M/%D(%W)%h:%m %t%[%17(%c %f%) %] %s")
+
+(setq wl-summary-line-format "%n%T%P%1@%D/%M(%W)%h:%m %t%[%25(%c %f%) %] %s")
+;(setq wl-summary-line-format "%n%T%P %D/%M (%W) %h:%m %t%[%25(%c %f%) %] %s")
+(setq wl-summary-width nil)
+;(setq wl-summary-always-sticky-folder-list t)
 (add-to-list 'wl-summary-sort-specs 'rdate) ;;reverse date as default sort
