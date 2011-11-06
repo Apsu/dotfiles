@@ -145,3 +145,4 @@
 (load "erlang")
 (load "tramp")
 (load "wander")
+(load "rainbow-delimiters")
