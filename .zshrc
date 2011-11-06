@@ -41,6 +41,15 @@ source $ZSH/oh-my-zsh.sh
 setopt extendedglob # Badassery like /base/**/file
 setopt incappendhistory # Share history among zsh sessions
 
+function complete-no-hash
+{
+  hash -r # rehash automatically in order to find new executables (if any)
+  zle expand-or-complete # fortunately we don't need to forward any arguments here or it would get more complex
+}
+
+zle -N complete complete-no-hash
+bindkey '^I' complete
+
 export SAL_USE_VCLPLUGIN=gen #libreoffice
 export WINEARCH=win32
 export BROWSER=conkeror
