@@ -43,6 +43,8 @@
 (setq wl-draft-delete-myself-from-bcc-fcc t)
 (setq wl-auto-save-drafts-interval 300)
 
+(setq elmo-network-session-idle-timeout 120)
+
 (defun my-wl-update-current-summaries ()
   (setq buffers (wl-collect-summary))
   (save-excursion
