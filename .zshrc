@@ -57,24 +57,9 @@ export EDITOR="em"
 
 # looolz
 alias sex='.ssh/ssh.exp'
-alias eakey='sex .gnupg/easso.gpg'
-alias stkey='sex .gnupg/staging.gpg'
 
-# remote access shortcuts for work
-alias dfw='eakey evan.callicoat dfw'
-alias iad='eakey evan.callicoat iad'
-alias ord='eakey evan.callicoat ord'
-alias ord1b='eakey evan.callicoat ord1b'
-alias mex07='eakey ecallicoat mex07'
-alias staging='stkey root staging'
-alias ordts='rdesktop -u evan.callicoat -d wm -x l -z -P -K -g 1680x1050 terminal1.dc.ord1a.mlsrvr.com'
-
-# other shortcuts
-alias mail='ssh mail'
-alias odin='ssh odin'
-alias omgpwny='ssh omgpwny'
-alias pwny='ssh -p 10022 pwny.no-ip.org'
-alias thor='ssh thor'
+# remote access aliases
+source $HOME/.zsh/remote
 
 # shorten it!
 alias s='sudo'
@@ -92,10 +77,6 @@ alias mr='s rmmod'
 
 # services
 alias rc='s rc.d'
-
-# vpn
-alias vpn='s vpnc rackspace.conf'
-alias vpnd='s vpnc-disconnect'
 
 # packages
 alias pi='packer --noconfirm --noedit'
