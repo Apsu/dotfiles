@@ -75,15 +75,27 @@ alias mg='lsmod | grep'
 alias mp='s modprobe'
 alias mr='s rmmod'
 
-# services
-alias rc='s rc.d'
+if [[ -f /etc/arch-release ]]; then
+  # services
+  alias rc='s rc.d'
+   
+  # packages
+  alias pi='packer --noconfirm --noedit'
+  alias pu='pi -Syu && s -E arch-configs'
+  alias pr='s pacman -Rcns'
+  alias pd='s pacman -Rcnsdd'
+  alias pq='pr $(pacman -Qqdt)'
+   
+  # ABS with -g for 's mkp'
+  alias -g mkp='makepkg -crsi'
+elif [[ -f /etc/debian_version ]]; then
+  #services
+  alias rc='s service'
 
-# packages
-alias pi='packer --noconfirm --noedit'
-alias pu='pi -Syu && s -E arch-configs'
-alias pr='s pacman -Rcns'
-alias pd='s pacman -Rcnsdd'
-alias pq='pr $(pacman -Qqdt)'
-
-# ABS with -g for 's mkp'
-alias -g mkp='makepkg -crsi'
+  # packages
+  alias pi='s aptitude --without-recommends install'
+  alias pu='s aptitude update && s aptitude full-upgrade'
+  alias pr='s aptitude purge'
+  #alias pd=something
+  #alias pq=something
+fi
