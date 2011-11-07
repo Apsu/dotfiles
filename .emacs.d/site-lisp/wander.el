@@ -2,9 +2,11 @@
 (autoload 'wl "wl" "Wanderlust" t)
 (autoload 'wl-other-frame "wl" "Wanderlust on new frame." t)
 (autoload 'wl-draft "wl-draft" "Write draft with Wanderlust." t)
+
 (require 'wl)
 (require 'elmo)
 (require 'mime-view)
+(require 'mime-w3m)
 
 (setq wl-from "Apsu <apsu@propter.net>")
 
@@ -34,6 +36,13 @@
 (setq wl-biff-check-interval 60)
 (setq wl-biff-check-folder-list '("%INBOX" "%Sent" "%Drafts" "%Trash" "%Gmail" "%Rackspace"))
 
+(setq wl-fcc-force-as-read t)
+(setq wl-fcc "%Sent")
+
+(setq wl-draft-always-delete-myself t)
+(setq wl-draft-delete-myself-from-bcc-fcc t)
+(setq wl-auto-save-drafts-interval 300)
+
 (defun my-wl-update-current-summaries ()
   (setq buffers (wl-collect-summary))
   (save-excursion
@@ -53,8 +62,10 @@
              (visual-line-mode t)))
 
 (autoload 'wl-user-agent-compose "wl-draft" nil t)
+
 (if (boundp 'mail-user-agent)
     (setq mail-user-agent 'wl-user-agent))
+
 (if (fboundp 'define-mail-user-agent)
     (define-mail-user-agent
       'wl-user-agent
@@ -70,18 +81,15 @@
 (setq mime-edit-split-message nil)
 (setq wl-draft-reply-buffer-style 'keep)
 
-(setq wl-fcc-force-as-read t)
-
 (setq wl-summary-max-thread-depth 30)
-
 (setq elmo-message-fetch-threshold 500000)
-
 (setq wl-prefetch-threshold 500000)
 
 (setq wl-folder-window-width 30)
 
 (mime-set-field-decoder
  'From nil 'eword-decode-and-unfold-unstructured-field-body)
+
 (mime-set-field-decoder
  'To nil 'eword-decode-and-unfold-unstructured-field-body)
 
@@ -137,7 +145,5 @@
               '((?@ (wl-summary-line-attached)))))
 
 (setq wl-summary-line-format "%n%T%P%1@%D/%M(%W)%h:%m %t%[%25(%c %f%) %] %s")
-;(setq wl-summary-line-format "%n%T%P %D/%M (%W) %h:%m %t%[%25(%c %f%) %] %s")
 (setq wl-summary-width nil)
-;(setq wl-summary-always-sticky-folder-list t)
 (add-to-list 'wl-summary-sort-specs 'rdate) ;;reverse date as default sort
