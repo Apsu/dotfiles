@@ -31,7 +31,7 @@
 (setq wl-trash-folder "%Trash")
 
 (setq wl-folder-check-async t)
-(setq wl-biff-check-interval 20)
+(setq wl-biff-check-interval 60)
 (setq wl-biff-check-folder-list '("%INBOX" "%Sent" "%Drafts" "%Trash" "%Gmail" "%Rackspace"))
 
 (defun my-wl-update-current-summaries ()
