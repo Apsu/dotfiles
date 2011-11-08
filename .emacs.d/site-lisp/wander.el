@@ -19,6 +19,8 @@
 
 (setq elmo-imap4-use-modified-utf7 t) 
 
+(setq wl-queue-folder "%Queue")
+
 ;; SMTP
 (setq wl-smtp-connection-type 'starttls)
 (setq wl-smtp-posting-port 10025)
