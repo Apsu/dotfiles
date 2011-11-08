@@ -85,6 +85,7 @@ if [[ -f /etc/arch-release ]]; then
   alias pr='s pacman -Rcns'
   alias pd='s pacman -Rcnsdd'
   alias pq='pr $(pacman -Qqdt)'
+  alias pf='pkgfile'
    
   # ABS with -g for 's mkp'
   alias -g mkp='makepkg -crsi'
@@ -96,7 +97,7 @@ elif [[ -f /etc/debian_version ]]; then
   alias pi='s aptitude --without-recommends install'
   alias pu='s aptitude update && s aptitude full-upgrade'
   alias pr='s aptitude purge'
-  alias pq='apt-cache search'
+  alias pf='apt-cache search'
   #alias pd=something
   #alias pq=something
 fi
