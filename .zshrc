@@ -96,6 +96,7 @@ elif [[ -f /etc/debian_version ]]; then
   alias pi='s aptitude --without-recommends install'
   alias pu='s aptitude update && s aptitude full-upgrade'
   alias pr='s aptitude purge'
+  alias pq='apt-cache search'
   #alias pd=something
   #alias pq=something
 fi
