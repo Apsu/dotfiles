@@ -1,0 +1,9 @@
+#!/bin/bash
+
+core=1
+cores=$(grep -c proc /proc/cpuinfo)
+irqs=$(grep eth /proc/interrupts | cut -d: -f1)
+for irq in $irqs; do
+  echo $core > /proc/irq/$(($irq % $cores))/smp_affinity
+  core=$(($core+1))
+done

@@ -1,23 +1,22 @@
 #!/bin/bash
 
-FILE="$HOME/.irssi/remote-control"
-
-irssi_command() {
-  if [ -p "$FILE" ]; then
-    ( echo "$*" > "$FILE" &
-      sleep 2
-      kill $! 2>/dev/null )&
-  fi
+irc_command() {
+    for fifo in ~/.weechat/weechat_fifo_*
+    do
+        ( echo "$*" > $fifo &
+            sleep 2
+            kill $! 2>/dev/null )&
+    done
 }
 
 while read -r line
 do
-  cmd=`echo $line | awk '{print $1}'`
-  if [ 'UNBLANK' = $cmd ]
-  then
-    irssi_command "/away"
-  elif [ 'LOCK' = $cmd -o 'BLANK' = $cmd ]
-  then
-    irssi_command "/away AFK"
-  fi
+    cmd=`echo $line | awk '{print $1}'`
+    if [ 'UNBLANK' = $cmd ]
+    then
+        irc_command "*/away"
+    elif [ 'LOCK' = $cmd -o 'BLANK' = $cmd ]
+    then
+        irc_command "*/away AFK"
+    fi
 done < <(xscreensaver-command -watch)
