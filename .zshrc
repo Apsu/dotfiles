@@ -99,5 +99,5 @@ elif [[ -f /etc/debian_version ]]; then
   alias pr='s aptitude purge'
   alias pf='apt-cache search'
   #alias pd=something
-  #alias pq=something
+  alias pq='s apt-get autoremove'
 fi
