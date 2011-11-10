@@ -22,7 +22,7 @@
 ; Hide the scrollbar
 (scroll-bar-mode -1)
 
-; Region highlighting without key clobbering 
+; Region highlighting without key clobbering
 (cua-mode)
 (setq-default cua-enable-cua-keys nil)
 (global-set-key (kbd "C-^") 'cua-set-rectangle-mark) ; C-^ because urxvt won't emit C-<Return>

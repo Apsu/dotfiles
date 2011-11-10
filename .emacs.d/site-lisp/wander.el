@@ -13,11 +13,11 @@
 ;; IMAP
 (setq elmo-imap4-default-stream-type 'starttls)
 (setq elmo-imap4-default-server "mail.propter.net")
-(setq elmo-imap4-default-user "apsu") 
-(setq elmo-imap4-default-authenticate-type 'clear) 
+(setq elmo-imap4-default-user "apsu")
+(setq elmo-imap4-default-authenticate-type 'clear)
 (setq elmo-imap4-default-port '143)
 
-(setq elmo-imap4-use-modified-utf7 t) 
+(setq elmo-imap4-use-modified-utf7 t)
 (setq wl-queue-folder "+~/.queue")
 
 ;; SMTP
