@@ -34,8 +34,9 @@
 (setq wl-trash-folder "%Trash")
 
 (setq wl-folder-check-async t)
-(setq wl-biff-check-interval 60)
+(setq wl-biff-check-interval 30)
 (setq wl-biff-check-folder-list '("%INBOX" "%Sent" "%Drafts" "%Trash" "%Gmail" "%Rackspace"))
+(setq elmo-imap4-set-seen-flag-explicitly t)
 
 (setq wl-fcc-force-as-read t)
 (setq wl-fcc "%Sent")
@@ -47,8 +48,8 @@
 (setq elmo-network-session-idle-timeout 120)
 
 (defun my-wl-update-current-summaries ()
-  (setq buffers (wl-collect-summary))
   (save-excursion
+    (setq buffers (wl-collect-summary))
     (dolist (buffer buffers)
       (set-buffer buffer)
       (wl-summary-sync-update))))

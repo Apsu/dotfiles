@@ -142,7 +142,7 @@
   (normal-top-level-add-subdirs-to-load-path))
 
 (load "python")
-(load "erlang")
+;(load "erlang")
 (load "tramp")
 (load "wander")
 (load "rainbow-delimiters")

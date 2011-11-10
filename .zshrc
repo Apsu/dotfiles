@@ -78,15 +78,15 @@ alias mr='s rmmod'
 if [[ -f /etc/arch-release ]]; then
   # services
   alias rc='s rc.d'
-   
+
   # packages
   alias pi='packer --noconfirm --noedit'
   alias pu='pi -Syu && s -E arch-configs'
   alias pr='s pacman -Rcns'
   alias pd='s pacman -Rcnsdd'
-  alias pq='pr $(pacman -Qqdt)'
+  alias pc='pr $(pacman -Qqdt)'
   alias pf='pkgfile'
-   
+
   # ABS with -g for 's mkp'
   alias -g mkp='makepkg -crsi'
 elif [[ -f /etc/debian_version ]]; then
@@ -97,7 +97,7 @@ elif [[ -f /etc/debian_version ]]; then
   alias pi='s aptitude --without-recommends install'
   alias pu='s aptitude update && s aptitude full-upgrade'
   alias pr='s aptitude purge'
-  alias pf='apt-cache search'
   #alias pd=something
-  alias pq='s apt-get autoremove'
+  alias pc='s apt-get autoremove'
+  alias pf='apt-file search'
 fi
