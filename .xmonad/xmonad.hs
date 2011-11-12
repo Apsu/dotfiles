@@ -26,7 +26,7 @@ import System.IO
 
 myFont = "xft:DejaVu Sans Mono-9"
 myModMask = mod4Mask
-myTerminal = "urxvtc"
+myTerminal = "urxvtc --perl-lib $HOME/.urxvt"
 
 myPromptConfig = defaultXPConfig
   { font = myFont
