@@ -80,8 +80,9 @@ if [[ -f /etc/arch-release ]]; then
   alias rc='s rc.d'
 
   # packages
-  alias pi='packer --noconfirm --noedit'
-  alias pu='pi -Syu && s -E arch-configs'
+  alias pq='packer --noconfirm --noedit'
+  alias pi='pq -S'
+  alias pu='pq -Syu && s -E arch-configs'
   alias pr='s pacman -Rcns'
   alias pd='s pacman -Rcnsdd'
   alias pc='pr $(pacman -Qqdt)'
@@ -94,6 +95,7 @@ elif [[ -f /etc/debian_version ]]; then
   alias rc='s service'
 
   # packages
+  alias pq='s aptitude search'
   alias pi='s aptitude --without-recommends install'
   alias pu='s aptitude update && s aptitude full-upgrade'
   alias pr='s aptitude purge'
