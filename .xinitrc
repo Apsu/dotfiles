@@ -14,4 +14,4 @@ statnot &
 mpd
 urxvtd -q -f -o
 
-exec xmonad
+exec ck-launch-session $1
