@@ -107,6 +107,7 @@
 ; Never use tabs
 (setq-default indent-tabs-mode nil)
 
+; Not quite working yet; will deprecate kill-temp-buffer(s) eventually
 (defun my-next-buffer nil
   (interactive)
   (save-excursion
@@ -126,6 +127,7 @@
     (kill-buffer))
 ;  (when (string-match "\*.+\*" name)
 ;    (when (not (string-match "org\\|terminal\\|server\\|minibuf\\|scratch" name)) ; except
+; For now, blacklist instead of whitelist
   (when (string-match "log\\|message\\|completion\\|help\\|buffer" name)
     (kill-buffer)))
 
