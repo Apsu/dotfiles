@@ -5,7 +5,7 @@ import qualified XMonad.StackSet as W
 
 import XMonad.Hooks.DynamicLog
 import XMonad.Hooks.EwmhDesktops
---import XMonad.Hooks.ICCCMFocus
+import XMonad.Hooks.ICCCMFocus
 import XMonad.Hooks.ManageDocks
 import XMonad.Hooks.ManageHelpers
 import XMonad.Hooks.SetWMName
@@ -80,7 +80,7 @@ main = do
     , layoutHook = myLayoutHook
     , logHook = do
       setWMName "LG3D"
---      takeTopFocus
+      takeTopFocus
       dynamicLogWithPP $ xmobarPP
         { ppOutput = hPutStrLn xmobar
         , ppTitle = xmobarColor "cyan" "" . shorten 100

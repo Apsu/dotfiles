@@ -35,7 +35,7 @@
 
 (setq wl-folder-check-async t)
 (setq wl-biff-check-interval 30)
-(setq wl-biff-check-folder-list '("%INBOX" "%Sent" "%Drafts" "%Trash" "%Gmail" "%Rackspace"))
+(setq wl-biff-check-folder-list '("%INBOX" "%Sent" "%Drafts" "%Trash" "%Gmail" "%Rackspace" "%Mailtrust"))
 (setq elmo-imap4-set-seen-flag-explicitly t)
 
 (setq wl-fcc-force-as-read t)

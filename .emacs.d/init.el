@@ -87,6 +87,11 @@
 (setq auto-mode-alist
       (cons '("\\.md\\'" . markdown-mode) auto-mode-alist))
 
+(add-hook 'markdown-mode-hook
+          (lambda ()
+            (define-key markdown-mode-map (kbd "M-n") 'next-buffer)
+            (define-key markdown-mode-map (kbd "M-p") 'previous-buffer)))
+
 ; PDF bindings ftw
 (require 'doc-view)
 (define-key doc-view-mode-map (kbd "C-v") 'doc-view-scroll-up-or-next-page)
@@ -102,16 +107,27 @@
 ; Never use tabs
 (setq-default indent-tabs-mode nil)
 
+(defun my-next-buffer nil
+  (interactive)
+  (save-excursion
+    (let ((buffer (current-buffer)))
+      (switch-to-buffer (other-buffer buffer t))
+      (when (string-match "\*.+\*" (buffer-name (car buffers)))
+        (setq buffers (cdr buffers))))
+    (when (not (eq (car buffers) (current-buffer)))
+      (switch-to-buffer buffer)
+      (bury-buffer buffer))))
+
 (defun kill-temp-buffer nil
   (setq name (buffer-name))
   (when (equal major-mode 'dired-mode) ; Kill old direds
     (kill-buffer))
   (when (equal major-mode 'calendar-mode) ; Kill old calendars
     (kill-buffer))
-  (when (string-match "\*.+\*" name)
-    (when (not (string-match "org\\|terminal\\|server\\|minibuf\\|scratch" name)) ; except
-;    (when (string-match "Messages\\|Completions\\|Help\\|Buffer List" name)
-      (kill-buffer))))
+;  (when (string-match "\*.+\*" name)
+;    (when (not (string-match "org\\|terminal\\|server\\|minibuf\\|scratch" name)) ; except
+  (when (string-match "log\\|message\\|completion\\|help\\|buffer" name)
+    (kill-buffer)))
 
 (defun kill-temp-buffers nil
   "Kill temporary buffers."
@@ -126,7 +142,7 @@
       (kill-temp-buffer))))
 
 ; Blows up on a few obscure things still, can't autorun all the time
-;(run-at-time nil 10 'kill-temp-buffers)
+(run-at-time nil 10 'kill-temp-buffers)
 
 ; Use keybinding instead
 (global-set-key (kbd "C-M-k") 'kill-temp-buffers)
