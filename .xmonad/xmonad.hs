@@ -72,6 +72,21 @@ myKeys =
     | (i, k) <- zip (XMonad.workspaces defaultConfig) [xK_1 .. xK_9]
   ]
 
+myPP = xmobarPP
+  { ppTitle = xmobarColor "cyan" "" . shorten 100
+  , ppSep = xmobarStrip " "
+  , ppLayout = xmobarColor "orange" "" . wrap "<" ">" . xmobarColor "white" "" . \x ->
+  case x of
+    "Mirror Tall" -> "-"
+    "Tall"        -> "|"
+    "Full"        -> "*"
+    "Grid"        -> "+"
+    _             -> x
+  , ppCurrent = xmobarColor "yellow" "" . wrap "[" "]" . xmobarColor "white" ""
+  , ppVisible = xmobarColor "cyan" "" . wrap "(" ")" . xmobarColor "white" ""
+  , ppUrgent = xmobarColor "red" "" . wrap "[" "]" . xmobarColor "white" ""
+  }
+
 main = do
   xmobar <- spawnPipe "/usr/bin/xmobar"
   xmonad $ withUrgencyHook NoUrgencyHook $ ewmh defaultConfig
@@ -81,21 +96,7 @@ main = do
     , logHook = do
       setWMName "LG3D"
 --      takeTopFocus
-      dynamicLogWithPP $ xmobarPP
-        { ppOutput = hPutStrLn xmobar
-        , ppTitle = xmobarColor "cyan" "" . shorten 100
-        , ppSep = xmobarStrip " "
-        , ppLayout = xmobarColor "orange" "" . wrap "<" ">" . xmobarColor "white" "" . \x ->
-          case x of
-            "Mirror Tall" -> "-"
-            "Tall"        -> "|"
-            "Full"        -> "*"
-            "Grid"        -> "+"
-            _             -> x
-        , ppCurrent = xmobarColor "yellow" "" . wrap "[" "]" . xmobarColor "white" ""
-        , ppVisible = xmobarColor "cyan" "" . wrap "(" ")" . xmobarColor "white" ""
-        , ppUrgent = xmobarColor "red" "" . wrap "[" "]" . xmobarColor "white" ""
-        }
+      dynamicLogWithPP myPP { ppOutput = hPutStrLn xmobar }
     , modMask = myModMask
     , terminal = myTerminal
     , normalBorderColor = "#555555"
