@@ -125,11 +125,10 @@
     (kill-buffer))
   (when (equal major-mode 'calendar-mode) ; Kill old calendars
     (kill-buffer))
-;  (when (string-match "\*.+\*" name)
-;    (when (not (string-match "org\\|terminal\\|server\\|minibuf\\|scratch" name)) ; except
-; For now, blacklist instead of whitelist
-  (when (string-match "log\\|message\\|completion\\|help\\|buffer" name)
-    (kill-buffer)))
+  (when (string-match "\*.+\*" name)
+    (when (not (string-match "org\\|terminal\\|server\\|minibuf\\|scratch" name)) ; except
+;  (when (string-match "log\\|messages\\|completion\\|help\\|buffer" name)
+      (kill-buffer))))
 
 (defun kill-temp-buffers nil
   "Kill temporary buffers."
@@ -144,7 +143,7 @@
       (kill-temp-buffer))))
 
 ; Blows up on a few obscure things still, can't autorun all the time
-(run-at-time nil 10 'kill-temp-buffers)
+;(run-at-time nil 10 'kill-temp-buffers)
 
 ; Use keybinding instead
 (global-set-key (kbd "C-M-k") 'kill-temp-buffers)
