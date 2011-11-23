@@ -4,15 +4,6 @@ stty -ixon
 # Gee Pee Gees!
 source .gnupg/gpg-agent.sh &>/dev/null
 
-# Handle TTY, PTY and Emacs terminal
-if [[ ! -z $EMACS ]]; then;
-  export TERM=eterm-color
-elif [[ ! -o login ]]; then;
-  export TERM=xterm-256color
-else;
-  export TERM=linux
-fi
-
 # Set name of the theme to load.
 # Look in ~/.oh-my-zsh/themes/
 # Optionally, if you set this to "random", it'll load a random theme each
@@ -49,6 +40,17 @@ function complete-no-hash
 
 zle -N complete complete-no-hash
 bindkey '^I' complete
+
+# Handle TTY, PTY, Tramp and Emacs terminal
+if [[ ! -z $EMACS ]]; then;
+  export TERM=eterm-color
+elif [[ ! -o login ]]; then;
+  export TERM=xterm-256color
+elif [[ $TERM == "dumb" ]]; then
+  unsetopt zle && PS1='$'
+else;
+  export TERM=linux
+fi
 
 export SAL_USE_VCLPLUGIN=gen #libreoffice
 export WINEARCH=win32
