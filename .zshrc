@@ -46,7 +46,7 @@ if [[ ! -z $EMACS ]]; then;
   export TERM=eterm-color
 elif [[ ! -o login ]]; then;
   export TERM=xterm-256color
-elif [[ $TERM == "dumb" ]]; then
+elif [[ $TERM == 'dumb' ]]; then
   unsetopt zle && PS1='$'
 else;
   export TERM=linux
@@ -55,7 +55,8 @@ fi
 export SAL_USE_VCLPLUGIN=gen #libreoffice
 export WINEARCH=win32
 export BROWSER=conkeror
-export EDITOR="em"
+export EDITOR='em'
+export DMENU_OPTIONS='-b -nb black -nf white -sb white -sf black -fn Sans:size=9'
 
 # looolz
 alias sex='.ssh/ssh.exp'
@@ -70,6 +71,9 @@ alias s='sudo'
 alias -g ls='ls --color=auto -hF'
 alias -g ll='ls -l'
 alias -g la='ls -a'
+alias -g lla='ls -la'
+alias -g lr='ls -R'
+alias -g lar='ls -aR'
 alias -g rr='rm -r'
 
 # modules
@@ -89,6 +93,7 @@ if [[ -f /etc/arch-release ]]; then
   alias pd='s pacman -Rcnsdd'
   alias pc='pr $(pacman -Qqdt)'
   alias pf='pkgfile'
+  alias pl='pacman -Ql'
 
   # ABS with -g for 's mkp'
   alias -g mkp='makepkg -crsi'
@@ -104,4 +109,5 @@ elif [[ -f /etc/debian_version ]]; then
   #alias pd=something
   alias pc='s apt-get autoremove'
   alias pf='apt-file search'
+  alias pl='dpkg -L'
 fi
