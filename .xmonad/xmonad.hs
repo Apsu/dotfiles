@@ -52,14 +52,14 @@ myKeysP =
   , ("M-f"                    , sendMessage $ Toggle NBFULL)
   , ("M-S-o"                  , spawn "conkeror")
   , ("M-S-l"                  , spawn "lockscreen")
-  , ("M-S-p"                  , spawn "pbd")
+  , ("M-S-p"                  , spawn "dmpc")
   , ("<XF86MonBrightnessUp>"  , spawn "sudo blutil blup")
   , ("<XF86MonBrightnessDown>", spawn "sudo blutil bldown")
   , ("<XF86KbdBrightnessUp>"  , spawn "sudo blutil kbup")
   , ("<XF86KbdBrightnessDown>", spawn "sudo blutil kbdown")
-  , ("<XF86AudioMute>"        , spawn "avol toggle")
-  , ("<XF86AudioRaiseVolume>" , spawn "avol 5%+")
-  , ("<XF86AudioLowerVolume>" , spawn "avol 5%-")
+  , ("<XF86AudioMute>"        , spawn "pavol toggle")
+  , ("<XF86AudioRaiseVolume>" , spawn "pavol +5%")
+  , ("<XF86AudioLowerVolume>" , spawn "pavol -5%")
   , ("<XF86Eject>"            , spawn "eject /dev/sr0")
   ]
 
