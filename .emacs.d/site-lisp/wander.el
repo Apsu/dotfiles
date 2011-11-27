@@ -57,6 +57,7 @@
 (add-hook 'wl-biff-notify-hook
           '(lambda ()
              (my-wl-update-current-summaries)
+             (x-urgency-hint (selected-frame) t)
              (ding)))
 
 (setq elmo-imap4-use-modified-utf7 t)

@@ -1,6 +1,6 @@
 (setq inhibit-startup-message    t)  ; Don't want any startup message
 
-; Backup file creation
+;; Backup file creation
 (setq make-backup-files t)
 (setq backup-directory-alist `(("." . "~/.emacs.d/backups")))
 (setq backup-by-copying-when-linked t)
@@ -13,27 +13,27 @@
 (setq query-replace-highlight    t)  ; Highlight query object
 (setq mouse-sel-retain-highlight t)  ; Keep mouse highlighting
 
-; Hide menubar
+;; Hide menubar
 (menu-bar-mode -1)
 
-; Hide the toolbar
+;; Hide the toolbar
 (tool-bar-mode -1)
 
-; Hide the scrollbar
+;; Hide the scrollbar
 (scroll-bar-mode -1)
 
-; Region highlighting without key clobbering
+;; Region highlighting without key clobbering
 (cua-mode)
 (setq-default cua-enable-cua-keys nil)
 (global-set-key (kbd "C-^") 'cua-set-rectangle-mark) ; C-^ because urxvt won't emit C-<Return>
 
-; Load theme!
+;; Load theme!
 (require 'color-theme)
 (load-library "color-theme")
 (load-library "color-theme-library")
 (color-theme-dark-laptop)
 
-; Line numbers!
+;; Line numbers!
 (require 'linum)
 (global-linum-mode)
 (setq linum-disabled-modes-list '(term-mode wl-summary-mode compilation-mode))
@@ -41,11 +41,11 @@
   (unless (or (minibufferp) (member major-mode linum-disabled-modes-list))
     (linum-mode 1)))
 
-; Buffer cycling
+;; Buffer cycling
 (global-set-key (kbd "M-n") 'next-buffer)
 (global-set-key (kbd "M-p") 'previous-buffer)
 
-; Window cycle helpers
+;; Window cycle helpers
 (defun goto-next-window nil
   (interactive)
   (select-window (next-window)))
@@ -54,34 +54,34 @@
   (interactive)
   (select-window (previous-window)))
 
-; Window cycling
+;; Window cycling
 (global-set-key (kbd "C-M-n") 'goto-next-window)
 (global-set-key (kbd "C-M-p") 'goto-prev-window)
 
-; Term mode cycling too!
+;; Term mode cycling too!
 (add-hook 'term-mode-hook
-	  (lambda ()
-	    (define-key term-raw-map (kbd "M-n") 'next-buffer)
-	    (define-key term-raw-map (kbd "M-p") 'previous-buffer)
+          (lambda ()
+            (define-key term-raw-map (kbd "M-n") 'next-buffer)
+            (define-key term-raw-map (kbd "M-p") 'previous-buffer)
             (define-key term-raw-map (kbd "C-M-n") 'goto-next-window)
             (define-key term-raw-map (kbd "C-M-p") 'goto-prev-window)))
 
-; Regexp i-search
+;; Regexp i-search
 (global-set-key (kbd "M-s") 'isearch-forward-regexp)
 (global-set-key (kbd "M-r") 'isearch-backward-regexp)
 
-; Because it's awesome
+;; Because it's awesome
 (global-set-key (kbd "C-.") 'repeat)
 
-; Load magit
+;; Load magit
 (autoload 'magit-status "magit" nil t)
 
-; Load haskell
+;; Load haskell
 (autoload 'haskell-mode "haskell-mode" nil t)
 (setq auto-mode-alist
       (cons '("\\.hs\\'" . haskell-mode) auto-mode-alist))
 
-; Load markdown
+;; Load markdown
 (autoload 'markdown-mode "markdown-mode"
   "Major mode for editing Markdown files" t)
 (setq auto-mode-alist
@@ -92,22 +92,22 @@
             (define-key markdown-mode-map (kbd "M-n") 'next-buffer)
             (define-key markdown-mode-map (kbd "M-p") 'previous-buffer)))
 
-; PDF bindings ftw
+;; PDF bindings ftw
 (require 'doc-view)
 (define-key doc-view-mode-map (kbd "C-v") 'doc-view-scroll-up-or-next-page)
 (define-key doc-view-mode-map (kbd "M-v") 'doc-view-scroll-down-or-previous-page)
 (setq doc-view-continuous t)
 
-; Rationalize file-buffer names
+;; Rationalize file-buffer names
 (require 'uniquify)
 
-; Column numbers!
+;; Column numbers!
 (setq column-number-mode t)
 
-; Never use tabs
+;; Never use tabs
 (setq-default indent-tabs-mode nil)
 
-; Not quite working yet; will deprecate kill-temp-buffer(s) eventually
+;; Not quite working yet; will deprecate kill-temp-buffer(s) eventually
 (defun my-next-buffer nil
   (interactive)
   (save-excursion
@@ -127,7 +127,7 @@
     (kill-buffer))
   (when (string-match "\*.+\*" name)
     (when (not (string-match "org\\|terminal\\|server\\|minibuf\\|scratch" name)) ; except
-;  (when (string-match "log\\|messages\\|completion\\|help\\|buffer" name)
+      ;; (when (string-match "log\\|messages\\|completion\\|help\\|buffer" name)
       (kill-buffer))))
 
 (defun kill-temp-buffers nil
@@ -142,24 +142,34 @@
       (set-buffer buffer)
       (kill-temp-buffer))))
 
-; Blows up on a few obscure things still, can't autorun all the time
-;(run-at-time nil 10 'kill-temp-buffers)
+;; Blows up on a few obscure things still, can't autorun all the time
+;;(run-at-time nil 10 'kill-temp-buffers)
 
-; Use keybinding instead
+;; Use keybinding instead
 (global-set-key (kbd "C-M-k") 'kill-temp-buffers)
 
-; Org Mode
+;; Org Mode
 (setq org-log-done 'time)
 (add-hook 'org-mode-hook
           (lambda ()
             (org-indent-mode)))
+
+;; Set WM_URGENT hint!
+(defun x-urgency-hint (frame arg &optional source)
+  (let* ((wm-hints (append (x-window-property "WM_HINTS" frame "WM_HINTS" source nil t) nil))
+         (flags (car wm-hints)))
+    (setcar wm-hints
+            (if arg
+                (logior flags #x00000100)
+              (logand flags #xFFFFFEFF)))
+    (x-change-window-property "WM_HINTS" wm-hints frame "WM_HINTS" 32 t)))
 
 (let ((default-directory "~/.emacs.d/site-lisp/"))
   (normal-top-level-add-to-load-path '("."))
   (normal-top-level-add-subdirs-to-load-path))
 
 (load "python")
-;(load "erlang")
+;;(load "erlang")
 (load "tramp")
 (load "wander")
 (load "rainbow-delimiters")
