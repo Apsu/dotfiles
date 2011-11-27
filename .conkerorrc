@@ -10,44 +10,44 @@ register_user_stylesheet(
 
 xkcd_add_title = true;
 
+/*
 function my_zoom_set (buffer) {
-    browser_zoom_set(buffer, false, 150);
+    browser_zoom_set(buffer, false, 125);
 }
 
 add_hook('create_buffer_late_hook', my_zoom_set);
+*/
 
 set_user_agent("Mozilla/5.0 (X11; Linux x86_64; rv:7.0) Gecko/20110927 Firefox/7.0");
 
-define_webjump("youtube", 
+define_webjump("g",
+               "http://www.google.com/search?q=%s",
+               $description = "Google search");
+
+define_webjump("youtube",
                "http://www.youtube.com/results?search_query=%s&search=Search",
                $description = "YouTube videos search");
 define_webjump("youtube-user",
                "http://youtube.com/profile_videos?user=%s",
                $description = "YouTube users search");
-define_webjump("ghs", 
+define_webjump("ghs",
                "http://www.github.com/search?type=Everything&q=%s",
                $description = "GitHub search");
-define_webjump("githubsearch", 
+define_webjump("githubsearch",
                "http://www.github.com/search?type=Everything&q=%s",
                $description = "GitHub search");
-define_webjump("gh", 
-               "http://www.github.com/%s", 
+define_webjump("gh",
+               "http://www.github.com/%s",
                $description="GitHub Shortcut");
 define_webjump("github",
                "http://www.github.com/%s",
                $description="GitHub Shortcut");
 define_webjump("cb",
-               "http://www.github.com/cloudbuilders/%s", 
+               "http://www.github.com/cloudbuilders/%s",
                $description="Cloudbuilders GitHub Shortcut");
 define_webjump("cloudbuilders",
                "http://www.github.com/cloudbuilders/%s",
                $description="Cloudbuilders GitHub Shortcut");
-define_webjump("wk",
-               "http://www.github.com/willkelly/%s",
-               $description="My GitHub Shortcut");
-define_webjump("willkelly",
-               "http://www.github.com/willkelly/%s",
-               $description="My GitHub Shortcut");
 define_webjump("aw",
                "http://wiki.archlinux.org/index.php?title=Special%3ASearch&search=%s&Fulltext=Search",
                $description="Arch Wiki Search");
@@ -61,13 +61,13 @@ define_webjump("amazon",
 define_webjump("deb",
                "http://packages.debian.org/search?keywords=%s&searchon=names&suite=unstable&section=all",
                $description="Debian Package Search");
-define_webjump("debfile", 
+define_webjump("debfile",
                "http://packages.debian.org/search?searchon=contents&keywords=%s&mode=path&suite=unstable&arch=any",
                $description="Debian Package Search (By File)");
 define_webjump("debbugs",
                "http://bugs.debian.org/%s",
                $description="Debian Bug Search");
-define_webjump("debpts", 
+define_webjump("debpts",
                "http://packages.qa.debian.org/%s",
                $description="Debian Package (Testing) Search");
 
@@ -77,7 +77,7 @@ define_webjump("ubuntupkg",
 define_webjump("ubuntufile",
                "http://packages.ubuntu.com/search?searchon=contents&keywords=%s&mode=path&arch=any",
                $description="Ubuntu package search (by file)");
-define_webjump("ubuntubugs", 
+define_webjump("ubuntubugs",
                "http://bugs.launchpad.net/ubuntu/+source/%s",
                $description="Ubuntu bug search");
 define_webjump("launchpad",
