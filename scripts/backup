@@ -2,5 +2,7 @@
 
 #TODO: Check that external is mounted
 
-sudo rsync -phaxPHAX --del / /boot /home /mnt/loki #apsu@munin::loki/
+distro=$(lsb_release -i -s)
+
+sudo rsync -phaxPHAX --del / /boot /home /mnt/$distro/
 echo -e "\a"
