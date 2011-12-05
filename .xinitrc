@@ -12,6 +12,7 @@ autocutsel -fork
 synergys
 statnot &
 mpd
+mpdnotify start
 urxvtd -q -f -o
 
-exec $1
+exec ck-launch-session $1
