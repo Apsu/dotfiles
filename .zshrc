@@ -52,12 +52,6 @@ else;
   export TERM=linux
 fi
 
-export SAL_USE_VCLPLUGIN=gen #libreoffice
-export WINEARCH=win32
-export BROWSER=conkeror
-export EDITOR='em'
-export DMENU_OPTIONS='-b -nb black -nf white -sb white -sf black -fn Sans:size=9'
-
 # looolz
 alias sex='.ssh/ssh.exp'
 
