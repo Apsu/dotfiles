@@ -20,9 +20,7 @@ add_hook('create_buffer_late_hook', my_zoom_set);
 
 set_user_agent("Mozilla/5.0 (X11; Linux x86_64; rv:7.0) Gecko/20110927 Firefox/7.0");
 
-define_webjump("g",
-               "http://www.google.com/search?q=%s",
-               $description = "Google search");
+define_opensearch_webjump("g", "google.xml");
 
 define_webjump("youtube",
                "http://www.youtube.com/results?search_query=%s&search=Search",
