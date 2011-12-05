@@ -22,7 +22,7 @@
 
 ;; SMTP
 (setq wl-smtp-connection-type 'starttls)
-(setq wl-smtp-posting-port 10025)
+(setq wl-smtp-posting-port 587)
 (setq wl-smtp-authenticate-type "plain")
 (setq wl-smtp-posting-user "apsu")
 (setq wl-smtp-posting-server "mail.propter.net")
