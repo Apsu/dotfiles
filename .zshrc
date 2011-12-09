@@ -70,6 +70,8 @@ alias -g lr='ls -R'
 alias -g lar='ls -aR'
 alias -g rr='rm -r'
 
+alias x='exec startx &> /dev/null'
+
 # modules
 alias mg='lsmod | grep'
 alias mp='s modprobe'
