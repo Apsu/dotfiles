@@ -15,4 +15,4 @@ mpd
 mpdnotify start
 urxvtd -q -f -o
 
-exec ck-launch-session $1
+exec ck-launch-session xmonad
