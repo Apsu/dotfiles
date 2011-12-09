@@ -2,4 +2,5 @@
 *.gz
 *fifo*
 xfer
+xfer.conf
 logs
