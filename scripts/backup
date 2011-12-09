@@ -4,5 +4,5 @@
 
 distro=$(lsb_release -i -s)
 
-sudo rsync -phaxPHAX --del / /boot /home /mnt/$distro/
+sudo rsync -phaxPHAX --del / /boot /home /mnt/${distro,,}/ # Requires bash 4.x
 echo -e "\a"
