@@ -53,13 +53,13 @@ else;
 fi
 
 # looolz
-alias sex='.ssh/ssh.exp'
+alias sex=.ssh/ssh.exp
 
 # remote access aliases
 source $HOME/.zsh/remote
 
 # shorten it!
-alias s='sudo'
+alias s=sudo
 
 # -g allows 's ll'
 alias -g ls='ls --color=auto -hF'
