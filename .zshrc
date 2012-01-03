@@ -59,7 +59,7 @@ alias sex=.ssh/ssh.exp
 source $HOME/.zsh/remote
 
 # shorten it!
-alias s=sudo
+alias -g s=sudo
 
 # -g allows 's ll'
 alias -g ls='ls --color=auto -hF'
@@ -70,13 +70,28 @@ alias -g lr='ls -R'
 alias -g lar='ls -aR'
 alias -g rr='rm -r'
 
+# X11 starter
 alias x='exec startx &> /dev/null'
 
 # modules
 alias mg='lsmod | grep'
 alias mp='s modprobe'
 alias mr='s rmmod'
+alias mi='s modinfo'
 
+# iproute2 goodness
+alias ipn='ip n'
+alias ipr='ip r'
+alias ipa='s ip a'
+alias ipl='s ip l'
+alias ipra='s ip r a'
+alias iprd='s ip r d'
+alias ipaa='ipa a dev'
+alias ipad='ipa d dev'
+alias iplu='ipl \s up dev'
+alias ipld='ipl \s down dev'
+
+# FIXME: Replace with lsb_release
 if [[ -f /etc/arch-release ]]; then
   # services
   alias rc='s rc.d'
@@ -93,6 +108,7 @@ if [[ -f /etc/arch-release ]]; then
 
   # ABS with -g for 's mkp'
   alias -g mkp='makepkg -crsi'
+# FIXME: Replace with lsb_release
 elif [[ -f /etc/debian_version ]]; then
   #services
   alias rc='s service'
@@ -102,6 +118,7 @@ elif [[ -f /etc/debian_version ]]; then
   alias pi='s aptitude --without-recommends install'
   alias pu='s aptitude update && s aptitude full-upgrade'
   alias pr='s aptitude purge'
+  # TODO: Figure out how to ignore deps
   #alias pd=something
   alias pc='s apt-get autoremove'
   alias pf='apt-file search'
