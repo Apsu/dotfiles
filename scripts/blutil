@@ -1,0 +1,38 @@
+#!/usr/bin/env bash
+
+bl_base=/sys/class/backlight/acpi_video0
+cur_br=$(cat $bl_base/brightness)
+min_br=0
+max_br=$(cat $bl_base/max_brightness)
+mid_br=$((($max_br+ $min_br) / 2))
+delay=0.01
+
+switch() {
+    if [[ $cur_br -eq $1 ]]
+    then
+        echo $1 > $bl_base/brightness
+    elif [[ $cur_br -lt $1 ]]
+    then
+        for i in $(seq $cur_br $1)
+        do
+            echo $i > $bl_base/brightness
+            sleep $delay
+        done
+    elif [[ $cur_br -gt $1 ]]
+    then
+        for i in $(seq $cur_br -1 $1)
+        do
+            echo $i > $bl_base/brightness
+            sleep $delay
+        done
+    fi
+}
+
+case $1 in
+    min | mid | max)
+        eval "switch \$${1}_br"
+        ;;
+    *)
+        switch $1
+        ;;
+esac
