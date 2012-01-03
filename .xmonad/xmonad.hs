@@ -91,10 +91,9 @@ main = do
   xmobar <- spawnPipe "/usr/bin/xmobar"
   xmonad $ withUrgencyHook NoUrgencyHook $ ewmh defaultConfig
     { manageHook = myManageHook
---    , startupHook = setWMName "LG3D"
+    , startupHook = setWMName "LG3D"
     , layoutHook = myLayoutHook
     , logHook = do
-      setWMName "LG3D"
 --      takeTopFocus
       dynamicLogWithPP myPP { ppOutput = hPutStrLn xmobar }
     , modMask = myModMask
