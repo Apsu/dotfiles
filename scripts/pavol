@@ -5,6 +5,6 @@ case $1 in
     amixer sset 'Master' toggle &> /dev/null
     ;;
   *)
-    pactl -- set-sink-volume 0 $1
+    pactl -- set-sink-volume $(pactl stat | awk '/Sink/{print $3}') $1
     ;;
 esac
