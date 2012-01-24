@@ -1,1 +1,0 @@
-../kickban.pl
