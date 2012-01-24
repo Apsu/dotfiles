@@ -15,4 +15,6 @@ mpd
 mpdnotify start
 urxvtd -q -f -o
 
+synclient TapButton1=1 TapButton2=3 TapButton3=2
+
 exec ck-launch-session xmonad
