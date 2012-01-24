@@ -3,9 +3,9 @@
 *fifo*
 xfer
 xfer.conf
-logs
-perl
-tcl
-lua
-python
-ruby
+logs/
+perl/
+tcl/
+lua/
+python/
+ruby/
