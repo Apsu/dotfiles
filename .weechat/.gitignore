@@ -4,3 +4,8 @@
 xfer
 xfer.conf
 logs
+perl
+tcl
+lua
+python
+ruby
