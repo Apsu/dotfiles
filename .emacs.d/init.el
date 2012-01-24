@@ -13,14 +13,10 @@
 (setq query-replace-highlight    t)  ; Highlight query object
 (setq mouse-sel-retain-highlight t)  ; Keep mouse highlighting
 
-;; Hide menubar
-(menu-bar-mode -1)
-
-;; Hide the toolbar
-;;(tool-bar-mode -1)
-
-;; Hide the scrollbar
-;;(scroll-bar-mode -1)
+;; Hide bars, if they exist
+(if (fboundp 'scroll-bar-mode) (scroll-bar-mode -1))
+(if (fboundp 'tool-bar-mode) (tool-bar-mode -1))
+(if (fboundp 'menu-bar-mode) (menu-bar-mode -1))
 
 ;; Region highlighting without key clobbering
 (cua-mode)
@@ -74,7 +70,9 @@
 (global-set-key (kbd "C-.") 'repeat)
 
 ;; Load magit
-(autoload 'magit-status "magit" nil t)
+;;(autoload 'magit-status "magit" nil t)
+
+(require 'git)
 
 ;; Load haskell
 (autoload 'haskell-mode "haskell-mode" nil t)
@@ -194,7 +192,7 @@
   (normal-top-level-add-subdirs-to-load-path))
 
 (load "python")
-;;(load "erlang")
+(load "erlang")
 (load "tramp")
 (load "wander")
 (load "rainbow-delimiters")
