@@ -3,6 +3,7 @@
 *fifo*
 xfer
 xfer.conf
+plugins.conf
 logs/
 perl/
 tcl/
