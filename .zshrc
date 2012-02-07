@@ -91,6 +91,16 @@ alias ipad='ipa d dev'
 alias iplu='ipl \s up dev'
 alias ipld='ipl \s down dev'
 
+# iptables
+alias ipt='s iptables'
+alias iptl='ipt -nvL'
+alias iptn='ipt -t nat'
+alias iptnl='iptn -nvL'
+alias iptm='ipt -t mangle'
+alias iptml='iptm -nvL'
+alias iptr='ipt -t raw'
+alias iptrl='iptr -nvL'
+
 # FIXME: Replace with lsb_release
 if [[ -f /etc/arch-release ]]; then
   # services
