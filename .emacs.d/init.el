@@ -1,5 +1,3 @@
-(setq inhibit-startup-message    t)  ; Don't want any startup message
-
 ;; Backup file creation
 (setq make-backup-files t)
 (setq backup-directory-alist `(("." . "~/.emacs.d/backups")))
@@ -9,6 +7,7 @@
       kept-old-versions 2
       version-control t)
 
+(setq inhibit-startup-message    t)  ; Don't want any startup message
 (setq search-highlight           t)  ; Highlight search object
 (setq query-replace-highlight    t)  ; Highlight query object
 (setq mouse-sel-retain-highlight t)  ; Keep mouse highlighting
