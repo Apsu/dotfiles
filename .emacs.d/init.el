@@ -102,6 +102,24 @@
 ;; Never use tabs
 (setq-default indent-tabs-mode nil)
 
+;; Make M-f/b/d/bkspc not suck!
+(require 'thingatpt)
+(global-set-key "\M-f" 'forward-same-syntax)
+(global-set-key "\M-b"
+                (lambda()
+                  (interactive)
+                  (forward-same-syntax -1)))
+(defun kill-syntax (&optional arg) "Kill ARG sets of syntax characters after point."
+  (interactive "p")
+  (let ((opoint (point)))
+    (forward-same-syntax arg)
+    (kill-region opoint (point))))
+(global-set-key "\M-d" 'kill-syntax)
+(global-set-key [(meta backspace)]
+                (lambda()
+                  (interactive)
+                  (kill-syntax -1)))
+
 ;; Not quite working yet; will deprecate kill-temp-buffer(s) eventually
 (defun my-next-buffer nil
   (interactive)
