@@ -208,6 +208,14 @@
 
 (load "python")
 (load "erlang")
-(load "tramp")
+(load "tramp-init")
 (load "wander")
 (load "rainbow-delimiters")
+(load "android-mode")
+(load "smooth-scrolling")
+
+;; android-mode
+(require 'android-mode)
+(setq android-mode-sdk-dir "~/workspace/android-sdk-linux")
+
+(require 'smooth-scrolling)
