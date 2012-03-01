@@ -69,9 +69,7 @@
 (global-set-key (kbd "C-.") 'repeat)
 
 ;; Load magit
-;;(autoload 'magit-status "magit" nil t)
-
-(require 'git)
+(autoload 'magit-status "magit" nil t)
 
 ;; Load haskell
 (autoload 'haskell-mode "haskell-mode" nil t)
