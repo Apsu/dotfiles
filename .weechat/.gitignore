@@ -4,6 +4,7 @@
 xfer
 xfer.conf
 plugins.conf
+irc.conf
 logs/
 perl/
 tcl/
